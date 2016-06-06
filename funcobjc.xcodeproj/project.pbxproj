@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B25912BD1D0604840008645F /* funcobjc.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B25912BC1D0604840008645F /* funcobjc.h */; };
-		B25912BF1D0604840008645F /* funcobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912BE1D0604840008645F /* funcobjc.m */; };
+		B25912CE1D0604A40008645F /* libfuncobjc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B25912B91D0604830008645F /* libfuncobjc.a */; };
+		B25912D61D0604D70008645F /* NSArray+Func.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912D51D0604D70008645F /* NSArray+Func.m */; };
+		B25912D81D060B520008645F /* NSArrayFuncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912D71D060B520008645F /* NSArrayFuncTests.m */; };
+		B25912DC1D0615780008645F /* NSDictionary+Func.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912DB1D0615780008645F /* NSDictionary+Func.m */; };
+		B25912DE1D06159F0008645F /* FuncShortcuts.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912DD1D06159F0008645F /* FuncShortcuts.m */; };
+		B25912E11D0621230008645F /* NSDictionaryFuncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912E01D0621230008645F /* NSDictionaryFuncTests.m */; };
+		B25912E31D0628F00008645F /* FuncShortcutsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912E21D0628F00008645F /* FuncShortcutsTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B25912CF1D0604A40008645F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B25912B11D0604830008645F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B25912B81D0604830008645F;
+			remoteInfo = funcobjc;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B25912B71D0604830008645F /* CopyFiles */ = {
@@ -18,7 +33,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				B25912BD1D0604840008645F /* funcobjc.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -26,8 +40,18 @@
 
 /* Begin PBXFileReference section */
 		B25912B91D0604830008645F /* libfuncobjc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuncobjc.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B25912BC1D0604840008645F /* funcobjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = funcobjc.h; sourceTree = "<group>"; };
-		B25912BE1D0604840008645F /* funcobjc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = funcobjc.m; sourceTree = "<group>"; };
+		B25912C91D0604A40008645F /* unit-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unit-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B25912CD1D0604A40008645F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B25912D41D0604D70008645F /* NSArray+Func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Func.h"; sourceTree = "<group>"; };
+		B25912D51D0604D70008645F /* NSArray+Func.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Func.m"; sourceTree = "<group>"; };
+		B25912D71D060B520008645F /* NSArrayFuncTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayFuncTests.m; sourceTree = "<group>"; };
+		B25912D91D0610490008645F /* FuncObjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FuncObjc.h; sourceTree = "<group>"; };
+		B25912DA1D0615780008645F /* NSDictionary+Func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Func.h"; sourceTree = "<group>"; };
+		B25912DB1D0615780008645F /* NSDictionary+Func.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Func.m"; sourceTree = "<group>"; };
+		B25912DD1D06159F0008645F /* FuncShortcuts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuncShortcuts.m; sourceTree = "<group>"; };
+		B25912DF1D061DD30008645F /* FuncShortcuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FuncShortcuts.h; sourceTree = "<group>"; };
+		B25912E01D0621230008645F /* NSDictionaryFuncTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryFuncTests.m; sourceTree = "<group>"; };
+		B25912E21D0628F00008645F /* FuncShortcutsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuncShortcutsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +62,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B25912C61D0604A40008645F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25912CE1D0604A40008645F /* libfuncobjc.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				B25912BB1D0604840008645F /* funcobjc */,
+				B25912CA1D0604A40008645F /* unit-tests */,
 				B25912BA1D0604830008645F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				B25912B91D0604830008645F /* libfuncobjc.a */,
+				B25912C91D0604A40008645F /* unit-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,10 +94,26 @@
 		B25912BB1D0604840008645F /* funcobjc */ = {
 			isa = PBXGroup;
 			children = (
-				B25912BC1D0604840008645F /* funcobjc.h */,
-				B25912BE1D0604840008645F /* funcobjc.m */,
+				B25912D41D0604D70008645F /* NSArray+Func.h */,
+				B25912D51D0604D70008645F /* NSArray+Func.m */,
+				B25912D91D0610490008645F /* FuncObjc.h */,
+				B25912DA1D0615780008645F /* NSDictionary+Func.h */,
+				B25912DB1D0615780008645F /* NSDictionary+Func.m */,
+				B25912DD1D06159F0008645F /* FuncShortcuts.m */,
+				B25912DF1D061DD30008645F /* FuncShortcuts.h */,
 			);
 			path = funcobjc;
+			sourceTree = "<group>";
+		};
+		B25912CA1D0604A40008645F /* unit-tests */ = {
+			isa = PBXGroup;
+			children = (
+				B25912CD1D0604A40008645F /* Info.plist */,
+				B25912D71D060B520008645F /* NSArrayFuncTests.m */,
+				B25912E01D0621230008645F /* NSDictionaryFuncTests.m */,
+				B25912E21D0628F00008645F /* FuncShortcutsTests.m */,
+			);
+			path = "unit-tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +136,24 @@
 			productReference = B25912B91D0604830008645F /* libfuncobjc.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		B25912C81D0604A40008645F /* unit-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B25912D11D0604A40008645F /* Build configuration list for PBXNativeTarget "unit-tests" */;
+			buildPhases = (
+				B25912C51D0604A40008645F /* Sources */,
+				B25912C61D0604A40008645F /* Frameworks */,
+				B25912C71D0604A40008645F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B25912D01D0604A40008645F /* PBXTargetDependency */,
+			);
+			name = "unit-tests";
+			productName = "unit-tests";
+			productReference = B25912C91D0604A40008645F /* unit-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -96,6 +164,9 @@
 				ORGANIZATIONNAME = "Alexander Smirnov";
 				TargetAttributes = {
 					B25912B81D0604830008645F = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					B25912C81D0604A40008645F = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
@@ -113,20 +184,51 @@
 			projectRoot = "";
 			targets = (
 				B25912B81D0604830008645F /* funcobjc */,
+				B25912C81D0604A40008645F /* unit-tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B25912C71D0604A40008645F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B25912B51D0604830008645F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B25912BF1D0604840008645F /* funcobjc.m in Sources */,
+				B25912DC1D0615780008645F /* NSDictionary+Func.m in Sources */,
+				B25912D61D0604D70008645F /* NSArray+Func.m in Sources */,
+				B25912DE1D06159F0008645F /* FuncShortcuts.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B25912C51D0604A40008645F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25912E31D0628F00008645F /* FuncShortcutsTests.m in Sources */,
+				B25912E11D0621230008645F /* NSDictionaryFuncTests.m in Sources */,
+				B25912D81D060B520008645F /* NSArrayFuncTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B25912D01D0604A40008645F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B25912B81D0604830008645F /* funcobjc */;
+			targetProxy = B25912CF1D0604A40008645F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B25912C01D0604840008645F /* Debug */ = {
@@ -229,6 +331,28 @@
 			};
 			name = Release;
 		};
+		B25912D21D0604A40008645F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "unit-tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.smirn0v.unit-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B25912D31D0604A40008645F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "unit-tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.smirn0v.unit-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -246,6 +370,14 @@
 			buildConfigurations = (
 				B25912C31D0604840008645F /* Debug */,
 				B25912C41D0604840008645F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B25912D11D0604A40008645F /* Build configuration list for PBXNativeTarget "unit-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B25912D21D0604A40008645F /* Debug */,
+				B25912D31D0604A40008645F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
