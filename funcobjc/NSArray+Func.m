@@ -8,25 +8,39 @@
 
 #import "NSArray+Func.h"
 
+typedef BOOL (^Predicate)(id);
+typedef id (^Function)(id);
+typedef id (^Function2)(id, id);
+
 @implementation NSArray (Func)
 
-- (NSArray*(^)(id(^)(id))) f_map {
-    return ^NSArray*(id(^f)(id)) {
-        return self.f_reduce(@[], ^id(NSArray* initial, id el) {
+- (NSArray * (^)(id(^)(id))) f_map {
+    return ^NSArray * (Function f) {
+        NSMutableArray *array = self.f_reduce([NSMutableArray array], ^NSMutableArray * (NSMutableArray *result, id el) {
             id map_result = f(el);
-            return map_result ? [initial arrayByAddingObject: map_result] : initial;
+            if (map_result) {
+                [result addObject:map_result];
+            }
+            return result;
         });
+        return [NSArray arrayWithArray:array];
     };
 }
 
-- (NSArray*(^)(BOOL(^)(id))) f_filter {
-    return ^NSArray*(BOOL(^f)(id)) {
-        return self.f_reduce(@[], ^id(NSArray* initial, id el) { return (f(el) && el) ? [initial arrayByAddingObject:el] : initial; });
+- (NSArray * (^)(Predicate))f_filter {
+    return ^NSArray * (Predicate f) {
+        NSMutableArray *array = self.f_reduce([NSMutableArray array], ^NSMutableArray * (NSMutableArray *result, id el) {
+            if (f(el)) {
+                [result addObject:el];
+            }
+            return result;
+        });
+        return [NSArray arrayWithArray:array];
     };
 }
 
-- (id(^)(id, id(^)(id,id))) f_reduce {
-    return ^id(id initial, id(^combine)(id,id)) {
+- (id (^)(id, Function2)) f_reduce {
+    return ^id(id initial, Function2 combine) {
         id result = initial;
         for(id el in self) {
             result = combine(result, el);
@@ -35,13 +49,15 @@
     };
 }
 
-- (NSDictionary*) f_dict {
-    return self.f_reduce(@{}.mutableCopy, ^id(NSMutableDictionary* initial, id el) { return ({ initial[el] = el; initial; }); });
+- (NSDictionary *)f_dict {
+    return self.f_reduce(@{}.mutableCopy, ^id(NSMutableDictionary* initial, id el) {
+        return ({ initial[el] = el; initial; });
+    });
 }
 
-- (NSString*(^)(NSString*)) f_join {
-    return ^NSString*(NSString *j) {
-        return [self componentsJoinedByString: j];
+- (NSString* (^)(NSString*)) f_join {
+    return ^NSString* (NSString *j) {
+        return [self componentsJoinedByString:j];
     };
 }
 
