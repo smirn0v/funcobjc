@@ -51,7 +51,7 @@ typedef id (^Function2)(id, id);
 
 - (NSDictionary *)f_dict {
     return self.f_reduce(@{}.mutableCopy, ^id(NSMutableDictionary* initial, id el) {
-        return ({ initial[el] = el; initial; });
+        return (initial[el] = el, initial);
     });
 }
 

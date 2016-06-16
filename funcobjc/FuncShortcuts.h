@@ -11,8 +11,8 @@ typedef id(^func_reduce_block)(id,id(^)(id,id));
 
 #pragma mark - NSString
 
-func_map_block func_uppercase();
+func_map_block func_uppercase(void);
 
 #pragma mark - NSNumber
 
-func_map_block func_inc();
+func_map_block func_inc(void);
