@@ -16,7 +16,7 @@ typedef id (^Function2)(id, id);
 
 - (NSArray * (^)(id(^)(id))) f_map {
     return ^NSArray * (Function f) {
-        NSMutableArray *array = self.f_reduce([NSMutableArray array], ^NSMutableArray * (NSMutableArray *result, id el) {
+        NSMutableArray *array = self.f_reduce([NSMutableArray arrayWithCapacity: self.count], ^NSMutableArray * (NSMutableArray *result, id el) {
             id map_result = f(el);
             if (map_result) {
                 [result addObject:map_result];
@@ -29,7 +29,7 @@ typedef id (^Function2)(id, id);
 
 - (NSArray * (^)(Predicate))f_filter {
     return ^NSArray * (Predicate f) {
-        NSMutableArray *array = self.f_reduce([NSMutableArray array], ^NSMutableArray * (NSMutableArray *result, id el) {
+        NSMutableArray *array = self.f_reduce([NSMutableArray arrayWithCapacity: self.count], ^NSMutableArray * (NSMutableArray *result, id el) {
             if (f(el)) {
                 [result addObject:el];
             }

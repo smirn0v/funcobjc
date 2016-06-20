@@ -51,4 +51,9 @@
     XCTAssertEqualObjects(result, expected);
 }
 
+- (void)testNil {
+    NSArray *array = nil;
+    XCTAssertEqualObjects(f_(array).f_filter(^BOOL(id el){return YES;}), @[]);
+}
+
 @end

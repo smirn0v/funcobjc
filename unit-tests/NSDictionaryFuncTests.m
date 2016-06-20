@@ -43,5 +43,9 @@
     XCTAssertEqualObjects(result, expected);
 }
 
+- (void)testNil {
+    NSDictionary *dict = @{};
+    XCTAssertEqualObjects(f_(dict).f_filter(^(id k, id v){ return YES;}), @{});
+}
 
 @end

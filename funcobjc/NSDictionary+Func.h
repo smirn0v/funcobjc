@@ -11,7 +11,7 @@
 @interface NSDictionary (Func)
 
 - (NSDictionary*(^)(NSDictionary*(^)(id,id))) f_map;
-- (NSDictionary*(^)(BOOL(^)(id,id))) f_filter;
-- (id(^)(id, id(^)(id,id,id))) f_reduce;
+- (NSDictionary*(^)(BOOL(^)(id,id)))          f_filter;
+- (id(^)(id, id(^)(id,id,id)))                f_reduce;
 
 @end
