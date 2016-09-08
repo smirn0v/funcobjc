@@ -8,6 +8,7 @@
 
 #import "NSArray+Func.h"
 #import "NSDictionary+Func.h"
+#import "NSSet+Func.h"
 #import "FuncShortcuts.h"
 
 /**
@@ -23,6 +24,13 @@ NSDictionary* __attribute__((overloadable)) f_(NSDictionary *dict);
  @return original array or @[] in case of 'nil' param passed.
  */
 NSArray* __attribute__((overloadable)) f_(NSArray *array);
+
+/**
+ Set access safety function.
+ @param set The original set or nil.
+ @return original set or new empty set in case of 'nil' param passed.
+ */
+NSSet* __attribute__((overloadable)) f_(NSSet *set);
 
 /**
  Generates array of numbers increasing from 0 to length.

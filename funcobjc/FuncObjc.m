@@ -17,6 +17,10 @@ NSArray* __attribute__((overloadable)) f_(NSArray* a) {
     return a?:@[];
 }
 
+NSSet* __attribute__((overloadable)) f_(NSSet *s) {
+    return s?:[NSSet set];
+}
+
 NSArray* __attribute__((overloadable)) f_range(NSUInteger length) {
     return f_range(0, length);
 }
