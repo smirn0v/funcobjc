@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		852D17D21D81BB47002F6306 /* NSSet+Func.m in Sources */ = {isa = PBXBuildFile; fileRef = 852D17D11D81BB47002F6306 /* NSSet+Func.m */; };
 		B25912CE1D0604A40008645F /* libfuncobjc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B25912B91D0604830008645F /* libfuncobjc.a */; };
 		B25912D61D0604D70008645F /* NSArray+Func.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912D51D0604D70008645F /* NSArray+Func.m */; };
 		B25912D81D060B520008645F /* NSArrayFuncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B25912D71D060B520008645F /* NSArrayFuncTests.m */; };
@@ -41,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		852D17D01D81BB47002F6306 /* NSSet+Func.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Func.h"; sourceTree = "<group>"; };
+		852D17D11D81BB47002F6306 /* NSSet+Func.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Func.m"; sourceTree = "<group>"; };
 		B25912B91D0604830008645F /* libfuncobjc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuncobjc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25912C91D0604A40008645F /* unit-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unit-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25912CD1D0604A40008645F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,14 +101,16 @@
 		B25912BB1D0604840008645F /* funcobjc */ = {
 			isa = PBXGroup;
 			children = (
-				B25912D41D0604D70008645F /* NSArray+Func.h */,
-				B25912D51D0604D70008645F /* NSArray+Func.m */,
 				B25912D91D0610490008645F /* FuncObjc.h */,
 				B2B909DF1D189DFE00D49927 /* FuncObjc.m */,
+				B25912DF1D061DD30008645F /* FuncShortcuts.h */,
+				B25912DD1D06159F0008645F /* FuncShortcuts.m */,
+				B25912D41D0604D70008645F /* NSArray+Func.h */,
+				B25912D51D0604D70008645F /* NSArray+Func.m */,
 				B25912DA1D0615780008645F /* NSDictionary+Func.h */,
 				B25912DB1D0615780008645F /* NSDictionary+Func.m */,
-				B25912DD1D06159F0008645F /* FuncShortcuts.m */,
-				B25912DF1D061DD30008645F /* FuncShortcuts.h */,
+				852D17D01D81BB47002F6306 /* NSSet+Func.h */,
+				852D17D11D81BB47002F6306 /* NSSet+Func.m */,
 			);
 			path = funcobjc;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				B25912D61D0604D70008645F /* NSArray+Func.m in Sources */,
 				B25912DE1D06159F0008645F /* FuncShortcuts.m in Sources */,
 				B2B909E01D189DFE00D49927 /* FuncObjc.m in Sources */,
+				852D17D21D81BB47002F6306 /* NSSet+Func.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

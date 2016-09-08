@@ -1,10 +1,12 @@
 //
-//  NSArray+Func.m
-//  funcobjc
+//  NSSet+Func.m
+//  MRMail
 //
-//  Created by Alexander Smirnov on 06/06/16.
-//  Copyright © 2016 Alexander Smirnov. All rights reserved.
+//  Created by Никита Анисимов on 16/08/16.
+//  Copyright © 2016 Mail.Ru. All rights reserved.
 //
+
+#import "NSSet+Func.h"
 
 #import "NSArray+Func.h"
 
@@ -12,43 +14,43 @@ typedef BOOL (^Predicate)(id);
 typedef id (^Function)(id);
 typedef id (^Function2)(id, id);
 
-@implementation NSArray (Func)
+@implementation NSSet (Func)
 
-- (NSArray * (^)(id(^)(id))) f_map {
-    return ^NSArray * (Function f) {
-        NSMutableArray *array = self.f_reduce([NSMutableArray arrayWithCapacity: self.count], ^NSMutableArray * (NSMutableArray *result, id el) {
+- (NSSet * (^)(id(^)(id))) f_map {
+    return ^NSSet * (Function f) {
+        NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             id map_result = f(el);
             if (map_result) {
                 [result addObject:map_result];
             }
             return result;
         });
-        return [NSArray arrayWithArray:array];
+        return [NSSet setWithSet:set];
     };
 }
 
-- (NSArray *(^)(NSArray *(^)(id))) f_flattenMap {
-    return ^NSArray *(NSArray *(^f)(id)) {
-        NSMutableArray *array = self.f_reduce([NSMutableArray array], ^id(NSMutableArray* initial, id el) {
-            NSArray *result = f(el);
+- (NSSet *(^)(NSSet *(^)(id))) f_flattenMap {
+    return ^NSSet *(NSSet *(^f)(id)) {
+        NSMutableSet *set = self.f_reduce([NSMutableSet set], ^id(NSMutableSet* initial, id el) {
+            NSSet *result = f(el);
             if (result.count > 0) {
-                [initial addObjectsFromArray:result];
+                [initial unionSet:result];
             }
             return initial;
         });
-        return [NSArray arrayWithArray:array];
+        return [NSSet setWithSet:set];
     };
 }
 
-- (NSArray * (^)(Predicate))f_filter {
-    return ^NSArray * (Predicate f) {
-        NSMutableArray *array = self.f_reduce([NSMutableArray arrayWithCapacity: self.count], ^NSMutableArray * (NSMutableArray *result, id el) {
+- (NSSet * (^)(Predicate))f_filter {
+    return ^NSSet * (Predicate f) {
+        NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             if (f(el)) {
                 [result addObject:el];
             }
             return result;
         });
-        return [NSArray arrayWithArray:array];
+        return [NSSet setWithSet:set];
     };
 }
 
@@ -94,28 +96,26 @@ typedef id (^Function2)(id, id);
     };
 }
 
+- (NSString *(^)(NSString *))f_join {
+    return self.allObjects.f_join;
+}
+
 - (NSDictionary *)f_dict {
     return self.f_reduce(@{}.mutableCopy, ^id(NSMutableDictionary* initial, id el) {
         return (initial[el] = el, initial);
     });
 }
 
-- (NSString* (^)(NSString*)) f_join {
-    return ^NSString* (NSString *j) {
-        return [self componentsJoinedByString:j];
-    };
-}
-
-- (NSArray *)f_flatten {
-    NSMutableArray *array = @[].mutableCopy;
-    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:NSArray.class]) {
-            [array addObjectsFromArray:(NSArray *)obj];
+- (NSSet *)f_flatten {
+    NSMutableSet *set = [NSMutableSet set];
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:NSSet.class]) {
+            [set unionSet:(NSSet*)obj];
         } else {
-            [array addObject:obj];
+            [set addObject:obj];
         }
     }];
-    return array.copy;
+    return set.copy;
 }
 
 @end

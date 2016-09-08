@@ -10,11 +10,18 @@
 
 @interface NSArray (Func)
 
-- (NSArray*(^)(id(^)(id)))   f_map;
-- (NSArray*(^)(BOOL(^)(id))) f_filter;
-- (id(^)(id, id(^)(id,id)))  f_reduce;
+- (NSArray*(^)(id(^)(id)))        f_map;
+- (NSArray*(^)(NSArray *(^)(id))) f_flattenMap;
+- (NSArray*(^)(BOOL(^)(id)))      f_filter;
+- (id(^)(id, id(^)(id,id)))       f_reduce;
 
-- (NSDictionary*)            f_dict;
-- (NSString*(^)(NSString*))  f_join;
+- (BOOL(^)(BOOL(^)(id)))          f_all;
+- (BOOL(^)(BOOL(^)(id)))          f_any;
+- (id (^)(BOOL(^)(id)))           f_first;
+
+- (NSDictionary*)                 f_dict;
+- (NSString*(^)(NSString*))       f_join;
+
+- (NSArray*)                      f_flatten;
 
 @end
