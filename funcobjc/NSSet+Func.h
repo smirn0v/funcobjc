@@ -1,9 +1,8 @@
 //
 //  NSSet+Func.h
-//  MRMail
+//  funcobjc
 //
 //  Created by Никита Анисимов on 16/08/16.
-//  Copyright © 2016 Mail.Ru. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
