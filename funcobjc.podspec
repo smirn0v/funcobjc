@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
                    }
 
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/smirn0v/funcobjc.git", :commit => "01ac13ea03a6f10e5c61e1771d22c275eaa7698e" }
+  s.source       = { :git => "https://github.com/smirn0v/funcobjc.git", :tag => s.version.to_s }
   s.source_files  = "funcobjc"
 
   s.requires_arc = true
