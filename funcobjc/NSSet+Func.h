@@ -1,26 +1,33 @@
 //
 //  NSSet+Func.h
-//  funcobjc
 //
 //  Created by Никита Анисимов on 16/08/16.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSSet (Func)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSSet*(^)(id(^)(id)))        f_map;
-- (NSSet*(^)(NSSet *(^)(id)))   f_flattenMap;
-- (NSSet*(^)(BOOL(^)(id)))      f_filter;
-- (id(^)(id, id(^)(id,id)))     f_reduce;
+@interface NSSet<__covariant ObjectType> (Func)
 
-- (BOOL(^)(BOOL(^)(id)))        f_all;
-- (BOOL(^)(BOOL(^)(id)))        f_any;
-- (id (^)(BOOL(^)(id)))         f_first;
+- (NSSet *(^)(id _Nullable (^NS_NOESCAPE)(ObjectType)))f_map;
+- (NSSet *(^)(NSSet *_Nullable(^NS_NOESCAPE)(ObjectType)))f_flattenMap;
+- (NSSet<ObjectType> *(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_filter;
+- (id(^)(id, id(^NS_NOESCAPE)(id, ObjectType)))f_reduce;
 
-- (NSString*(^)(NSString*))     f_join;
-- (NSDictionary*)               f_dict;
+- (BOOL(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_all;
+- (BOOL(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_any;
+- (ObjectType _Nullable (^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_first;
 
-- (NSSet*)                      f_flatten;
+- (NSString *(^)(NSString *))f_join;
+- (NSDictionary<ObjectType, ObjectType> *)f_dict;
+
+- (NSSet *)f_flatten;
+
+// Package methods
+
+- (NSSet<ObjectType> *)f_self;
 
 @end
+
+NS_ASSUME_NONNULL_END

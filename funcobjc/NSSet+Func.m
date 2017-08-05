@@ -1,6 +1,5 @@
 //
 //  NSSet+Func.m
-//  funcobjc
 //
 //  Created by Никита Анисимов on 16/08/16.
 //
@@ -15,7 +14,7 @@ typedef id (^Function2)(id, id);
 
 @implementation NSSet (Func)
 
-- (NSSet * (^)(id(^)(id))) f_map {
+- (NSSet * _Nonnull (^)(id  _Nullable (^ _Nonnull)(id _Nonnull)))f_map {
     return ^NSSet * (Function f) {
         NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             id map_result = f(el);
@@ -28,7 +27,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (NSSet *(^)(NSSet *(^)(id))) f_flattenMap {
+- (NSSet * _Nonnull (^)(NSSet * _Nullable (^ _Nonnull)(id _Nonnull)))f_flattenMap {
     return ^NSSet *(NSSet *(^f)(id)) {
         NSMutableSet *set = self.f_reduce([NSMutableSet set], ^id(NSMutableSet* initial, id el) {
             NSSet *result = f(el);
@@ -41,7 +40,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (NSSet * (^)(Predicate))f_filter {
+- (NSSet<id> * (^)(Predicate))f_filter {
     return ^NSSet * (Predicate f) {
         NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             if (f(el)) {
@@ -54,7 +53,7 @@ typedef id (^Function2)(id, id);
 }
 
 - (id (^)(id, Function2)) f_reduce {
-    return ^id(id initial, Function2 combine) {
+    return ^id(id initial, Function2 _Nonnull combine) {
         id result = initial;
         for(id el in self) {
             result = combine(result, el);
@@ -72,7 +71,7 @@ typedef id (^Function2)(id, id);
 }
 
 - (BOOL(^)(BOOL(^)(id)))f_any {
-    return ^BOOL (BOOL(^predicate)(id)) {
+    return ^BOOL (BOOL(^ _Nonnull predicate)(id)) {
         for (id item in self) {
             if (predicate(item)) {
                 return YES;
@@ -82,8 +81,8 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (id (^)(BOOL(^)(id)))f_first {
-    return ^id(BOOL (^predicate)(id)) {
+- (id  _Nullable (^)(BOOL (^ _Nonnull)(id _Nonnull)))f_first {
+    return ^id(BOOL (^ _Nonnull predicate)(id)) {
         id passedObject = nil;
         for (id object in self) {
             if (predicate(object)) {
@@ -101,7 +100,8 @@ typedef id (^Function2)(id, id);
 
 - (NSDictionary *)f_dict {
     return self.f_reduce(@{}.mutableCopy, ^id(NSMutableDictionary* initial, id el) {
-        return (initial[el] = el, initial);
+        initial[el] = el;
+        return initial;
     });
 }
 
@@ -115,6 +115,10 @@ typedef id (^Function2)(id, id);
         }
     }];
     return set.copy;
+}
+
+- (NSSet *)f_self {
+    return self;
 }
 
 @end

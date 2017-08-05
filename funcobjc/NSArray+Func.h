@@ -7,20 +7,45 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (Func)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSArray*(^)(id(^)(id)))        f_map;
-- (NSArray*(^)(NSArray *(^)(id))) f_flattenMap;
-- (NSArray*(^)(BOOL(^)(id)))      f_filter;
-- (id(^)(id, id(^)(id,id)))       f_reduce;
+@interface NSArray<__covariant ObjectType> (Func)
 
-- (BOOL(^)(BOOL(^)(id)))          f_all;
-- (BOOL(^)(BOOL(^)(id)))          f_any;
-- (id (^)(BOOL(^)(id)))           f_first;
+- (NSArray *(^)(id _Nullable(^NS_NOESCAPE)(ObjectType)))f_map;
+- (NSArray *(^)(id _Nullable(^NS_NOESCAPE)(ObjectType, NSUInteger idx)))f_indexedMap;
+- (NSArray *(^)(NSArray *_Nullable(^NS_NOESCAPE)(ObjectType)))f_flattenMap;
+- (NSArray<ObjectType> *(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_filter;
+- (id(^)(id, id(^NS_NOESCAPE)(id, ObjectType)))f_reduce;
 
-- (NSDictionary*)                 f_dict;
-- (NSString*(^)(NSString*))       f_join;
+- (BOOL(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_all;
+- (BOOL(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_any;
+- (ObjectType _Nullable (^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_first;
+- (NSArray<ObjectType> *(^)(BOOL(^NS_NOESCAPE)(ObjectType, NSUInteger idx)))f_takeUntil;
+- (ObjectType _Nullable(^)(BOOL(^NS_NOESCAPE)(ObjectType)))f_last;
 
-- (NSArray*)                      f_flatten;
+- (NSDictionary<ObjectType, ObjectType> *)f_dict;
+- (NSDictionary<id, ObjectType> *(^)(id(^NS_NOESCAPE)(ObjectType)))f_dictByKey;
+- (NSArray<ObjectType> *(^)(NSArray<ObjectType> *_Nullable))f_concat;
+- (NSString *(^)(NSString *))f_join;
+
+- (NSArray<ObjectType> *(^)(NSUInteger))f_skip;
+
+- (NSArray *)f_flatten;
+- (NSArray<ObjectType> *(^)(NSUInteger, NSUInteger))f_slice;
+
+- (NSArray<ObjectType> *(^)(void))f_unique;
+- (NSArray<ObjectType> *(^)(id(^NS_NOESCAPE)(ObjectType)))f_uniqueByKey;
+
+- (void(^)(void(^NS_NOESCAPE)(ObjectType)))f_each;
+
+- (BOOL(^)(NSArray<ObjectType>*,BOOL(^)(ObjectType,ObjectType)))f_equal;
+
+- (NSDictionary<id, NSArray<ObjectType> *> *(^)(id(^NS_NOESCAPE)(ObjectType)))f_groupBy;
+
+// Package methods
+
+- (NSArray<ObjectType> *)f_self;
 
 @end
+
+NS_ASSUME_NONNULL_END

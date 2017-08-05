@@ -6,11 +6,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FNPair.h"
 
-@interface NSDictionary (Func)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSDictionary*(^)(NSDictionary*(^)(id,id))) f_map;
-- (NSDictionary*(^)(BOOL(^)(id,id)))          f_filter;
-- (id(^)(id, id(^)(id,id,id)))                f_reduce;
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (Func)
+
+- (instancetype)f_initWithPairs:(NSArray<FNPair<KeyType, ObjectType> *> *)pairs;
+
+- (NSDictionary *(^)(NSDictionary *(^NS_NOESCAPE)(KeyType, ObjectType)))f_map;
+- (NSDictionary<KeyType, ObjectType> *(^)(BOOL(^NS_NOESCAPE)(KeyType, ObjectType)))f_filter;
+- (id(^)(id, id(^NS_NOESCAPE)(id, KeyType, ObjectType)))f_reduce;
+
+// Package methods
+
+- (NSDictionary<KeyType, ObjectType> *)f_self;
 
 @end
+
+NS_ASSUME_NONNULL_END

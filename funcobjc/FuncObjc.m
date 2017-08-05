@@ -8,26 +8,30 @@
 #import <Foundation/Foundation.h>
 #import "FuncObjc.h"
 
-NSDictionary* __attribute__((overloadable)) f_(NSDictionary *d) {
-    return d?:@{};
+NSDictionary *f_nonNull(NSDictionary *dict) __attribute__((overloadable)) {
+    return (dict ?: @{});
 }
 
-NSArray* __attribute__((overloadable)) f_(NSArray* a) {
-    return a?:@[];
+NSArray *f_nonNull(NSArray* a) __attribute__((overloadable)) {
+    return (a ?: @[]);
 }
 
-NSSet* __attribute__((overloadable)) f_(NSSet *s) {
-    return s?:[NSSet set];
+NSSet *f_nonNull(NSSet *s) __attribute__((overloadable)) {
+    return (s ?: [NSSet set]);
 }
 
-NSArray* __attribute__((overloadable)) f_range(NSUInteger length) {
-    return f_range(0, length);
+NSArray *f_range(NSUInteger length) __attribute__((overloadable)) {
+    return f_range(0, length, 1);
 }
 
-NSArray* __attribute__((overloadable)) f_range(NSUInteger start, NSUInteger length) {
+NSArray *f_range(NSUInteger start, NSUInteger length) __attribute__((overloadable)) {
+    return f_range(start, length, 1);
+}
+
+NSArray *f_range(NSUInteger start, NSUInteger length, NSUInteger step) __attribute__((overloadable)) {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity: length];
-    for(NSUInteger i = start; i < (start+length); i++) {
-        [result addObject: @(i)];
+    for (NSUInteger i = 0; i < length; ++i) {
+        [result addObject:@(start + i * step)];
     }
     return result;
 }

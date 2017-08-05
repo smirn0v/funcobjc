@@ -15,14 +15,14 @@
 @implementation FuncShortcutsTests
 
 - (void)testUppercase {
-    id result = @[@"a", @"b"].f_map(func_uppercase());
+    id result = @[@"a", @"b"].f_map(f_uppercase());
     id expected = @[@"A", @"B"];
     
     XCTAssertEqualObjects(result, expected);
 }
 
 - (void)testInc {
-    id result = @[@1, @2].f_map(func_inc());
+    id result = @[@1, @2].f_map(f_inc());
     id expected = @[@2, @3];
     
     XCTAssertEqualObjects(result, expected);
