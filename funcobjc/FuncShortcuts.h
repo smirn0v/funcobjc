@@ -3,6 +3,7 @@
 //  funcobjc
 //
 //  Created by Alexander Smirnov on 07/06/16.
+//  Copyright © 2016 Alexander Smirnov. All rights reserved.
 //
 
 NS_ASSUME_NONNULL_BEGIN

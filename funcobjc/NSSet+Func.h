@@ -1,7 +1,9 @@
 //
 //  NSSet+Func.h
+//  MRMail
 //
 //  Created by Никита Анисимов on 16/08/16.
+//  Copyright © 2016 Mail.Ru. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
