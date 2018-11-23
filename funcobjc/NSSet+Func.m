@@ -1,7 +1,9 @@
 //
 //  NSSet+Func.m
+//  MRMail
 //
 //  Created by Никита Анисимов on 16/08/16.
+//  Copyright © 2016 Mail.Ru. All rights reserved.
 //
 
 #import "NSSet+Func.h"
@@ -14,7 +16,7 @@ typedef id (^Function2)(id, id);
 
 @implementation NSSet (Func)
 
-- (NSSet * _Nonnull (^)(id  _Nullable (^ _Nonnull)(id _Nonnull)))f_map {
+- (NSSet * _Nonnull (^)(NS_NOESCAPE id  _Nullable (^ _Nonnull)(id _Nonnull)))f_map {
     return ^NSSet * (Function f) {
         NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             id map_result = f(el);
@@ -27,7 +29,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (NSSet * _Nonnull (^)(NSSet * _Nullable (^ _Nonnull)(id _Nonnull)))f_flattenMap {
+- (NSSet * _Nonnull (^)(NS_NOESCAPE NSSet * _Nullable (^ _Nonnull)(id _Nonnull)))f_flattenMap {
     return ^NSSet *(NSSet *(^f)(id)) {
         NSMutableSet *set = self.f_reduce([NSMutableSet set], ^id(NSMutableSet* initial, id el) {
             NSSet *result = f(el);
@@ -40,7 +42,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (NSSet<id> * (^)(Predicate))f_filter {
+- (NSSet<id> * (^)(NS_NOESCAPE Predicate))f_filter {
     return ^NSSet * (Predicate f) {
         NSMutableSet *set = self.f_reduce([NSMutableSet setWithCapacity:self.count], ^NSMutableSet * (NSMutableSet *result, id el) {
             if (f(el)) {
@@ -52,7 +54,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (id (^)(id, Function2)) f_reduce {
+- (id (^)(id, NS_NOESCAPE Function2)) f_reduce {
     return ^id(id initial, Function2 _Nonnull combine) {
         id result = initial;
         for(id el in self) {
@@ -62,7 +64,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (BOOL (^)(BOOL (^)(id)))f_all {
+- (BOOL (^)(NS_NOESCAPE BOOL (^)(id)))f_all {
     return ^BOOL (BOOL(^predicate)(id)) {
         return !self.f_any(^BOOL(id obj) {
             return !predicate(obj);
@@ -70,7 +72,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (BOOL(^)(BOOL(^)(id)))f_any {
+- (BOOL(^)(NS_NOESCAPE BOOL(^)(id)))f_any {
     return ^BOOL (BOOL(^ _Nonnull predicate)(id)) {
         for (id item in self) {
             if (predicate(item)) {
@@ -81,7 +83,7 @@ typedef id (^Function2)(id, id);
     };
 }
 
-- (id  _Nullable (^)(BOOL (^ _Nonnull)(id _Nonnull)))f_first {
+- (id  _Nullable (^)(NS_NOESCAPE BOOL (^ _Nonnull)(id _Nonnull)))f_first {
     return ^id(BOOL (^ _Nonnull predicate)(id)) {
         id passedObject = nil;
         for (id object in self) {

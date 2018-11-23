@@ -1,7 +1,9 @@
 //
 //  FNPair.m
+//  MRMail
 //
 //  Created by Evgeniy Yurtaev on 20/04/2017.
+//  Copyright © 2017 Mail.Ru. All rights reserved.
 //
 
 #import "FNPair.h"

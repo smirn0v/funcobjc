@@ -3,6 +3,7 @@
 //  funcobjc
 //
 //  Created by Alexander Smirnov on 06/06/16.
+//  Copyright © 2016 Alexander Smirnov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDictionary *(^)(NSDictionary *(^NS_NOESCAPE)(KeyType, ObjectType)))f_map;
 - (NSDictionary<KeyType, ObjectType> *(^)(BOOL(^NS_NOESCAPE)(KeyType, ObjectType)))f_filter;
 - (id(^)(id, id(^NS_NOESCAPE)(id, KeyType, ObjectType)))f_reduce;
+- (void (^)(void (^NS_NOESCAPE)(KeyType, ObjectType)))f_each;
 
 // Package methods
 

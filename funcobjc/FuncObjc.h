@@ -3,13 +3,18 @@
 //  funcobjc
 //
 //  Created by Alexander Smirnov on 06/06/16.
+//  Copyright © 2016 Alexander Smirnov. All rights reserved.
 //
 
 #import "NSArray+Func.h"
 #import "NSDictionary+Func.h"
 #import "NSSet+Func.h"
+#import "NSHashTable+Func.h"
+#import "NSMapTable+Func.h"
 #import "FuncShortcuts.h"
 #import "FNPair.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  `f_nonNull` function loses generic type of argument.
@@ -23,21 +28,21 @@
  @return original dictionary or @{} in case of 'nil' param passed
  */
 
-NSDictionary *f_nonNull(NSDictionary *dict) __attribute__((overloadable));
+NSDictionary *f_nonNull(NSDictionary * _Nullable dict) __attribute__((overloadable));
 
 /**
  Array access safety function.
  @param array The original array or nil.
  @return original array or @[] in case of 'nil' param passed.
  */
-NSArray *f_nonNull(NSArray *array) __attribute__((overloadable));
+NSArray *f_nonNull(NSArray * _Nullable array) __attribute__((overloadable));
 
 /**
  Set access safety function.
  @param set The original set or nil.
  @return original set or new empty set in case of 'nil' param passed.
  */
-NSSet *f_nonNull(NSSet *set) __attribute__((overloadable));
+NSSet *f_nonNull(NSSet * _Nullable set) __attribute__((overloadable));
 
 /**
  Generates array of numbers increasing from 0 to length.
@@ -61,3 +66,6 @@ NSArray<NSNumber *> *f_range(NSUInteger start, NSUInteger length)  __attribute__
  @return array of numbers, i.e. @[ @10, @20, @30 ] for start = 10, length = 3, step = 10
  */
 NSArray<NSNumber *> *f_range(NSUInteger start, NSUInteger length, NSUInteger step) __attribute__((overloadable));
+
+NS_ASSUME_NONNULL_END
+
